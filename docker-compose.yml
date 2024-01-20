@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    container_name: app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/code/app
+      - ./coverage.xml:/app/coverage.xml
+
+    command:
+      ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
