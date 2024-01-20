@@ -13,7 +13,7 @@ def create_app() -> FastAPI:
     Returns:
         FastAPI: The configured FastAPI application instance.
     """
-    app = FastAPI()
+    app = FastAPI(title="Delivery Fee Calculator API")
 
     router = APIRouter()
 

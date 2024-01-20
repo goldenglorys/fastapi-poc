@@ -35,16 +35,16 @@ def get_health_status() -> HealthStatus:
     disk_usage = psutil.disk_usage("/")
 
     return HealthStatus(
-        applicationVersion="0.1.0",
+        application_version="0.1.0",
         status="OK",
-        uptimeSeconds=uptime,
-        systemResources=SystemResources(
-            cpuUsagePercent=cpu_percent,
-            diskUsage=DiskUsage(
-                freeMB=disk_usage.free / (1024 * 1024),
-                totalMB=disk_usage.total / (1024 * 1024),
-                usedMB=disk_usage.used / (1024 * 1024),
+        uptime_seconds=uptime,
+        system_resources=SystemResources(
+            cpu_usage_percent=cpu_percent,
+            disk_usage=DiskUsage(
+                free_mb=disk_usage.free / (1024 * 1024),
+                total_mb=disk_usage.total / (1024 * 1024),
+                used_mb=disk_usage.used / (1024 * 1024),
             ),
-            memoryUsageMB=memory_info.rss / (1024 * 1024),
+            memory_usage_mb=memory_info.rss / (1024 * 1024),
         ),
     )
