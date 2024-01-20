@@ -63,6 +63,15 @@ class Settings(BaseSettings):
         description="Maximum delivery fee"
     )
 
+    DISTANCE_INTERVAL: int = Field(
+        500,
+        description="Distance interval for additional delivery fee"
+    )
+    FREE_DELIVERY_THRESHOLD: int = Field(
+        20000,
+        description="Delivery fee is free if cart value id equal or over 2000"
+    )
+
     model_config = SettingsConfigDict(env_file=".env")
 
 

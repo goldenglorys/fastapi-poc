@@ -21,7 +21,7 @@ class DeliveryFeeCalculator:
         """
         Initialize the DeliveryFeeCalculator with the provided settings.
 
-        The settings contain parameters such as minimum cart value, distance fees, item fees, and Friday rush details.
+        The settings contain constant parameters such as minimum cart value, distance fees, item fees, and Friday rush details.
         """
         self.settings = SETTINGS
 
@@ -52,10 +52,13 @@ class DeliveryFeeCalculator:
         :param delivery_distance: The delivery distance in meters.
         :return: The calculated distance fee in cents.
         """
-        rounded_distance = (delivery_distance + 500) - divmod(delivery_distance, 500)[1]
+        rounded_distance = (
+            delivery_distance + self.settings.DISTANCE_INTERVAL
+        ) - divmod(delivery_distance, self.settings.DISTANCE_INTERVAL)[1]
         return max(
             self.settings.BASE_DISTANCE_FEE,
-            (rounded_distance // 500) * self.settings.DISTANCE_SURCHARGE,
+            (rounded_distance // self.settings.DISTANCE_INTERVAL)
+            * self.settings.DISTANCE_SURCHARGE,
         )
 
     def calculate_item_fee(self, number_of_items: int) -> int:
@@ -124,6 +127,8 @@ class DeliveryFeeCalculator:
         :param delivery_time: The delivery time in ISO format.
         :return: The final calculated delivery fee in cents.
         """
+        if cart_value >= self.settings.FREE_DELIVERY_THRESHOLD:
+            return 0
         cart_fee = self.calculate_cart_fee(cart_value)
         distance_fee = self.calculate_distance_fee(delivery_distance)
         item_fee = self.calculate_item_fee(number_of_items)
