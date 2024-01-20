@@ -8,7 +8,7 @@ from .schemas import DiskUsage, HealthStatus, SystemResources
 
 router = APIRouter(
     prefix="/health",
-    tags=["Health"],
+    tags=["Server Health"],
 )
 
 start_time = time.time()
