@@ -12,6 +12,8 @@ pydantic = "^2.5.3"
 psutil = "^5.9.8"
 fastapi = "^0.109.0"
 uvicorn = "^0.26.0"
+python-dotenv = "^1.0.0"
+pydantic-settings = "^2.1.0"
 
 
 [tool.poetry.group.dev.dependencies]
