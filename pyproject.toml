@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "delivery-fee-calculator-api"
+version = "0.1.0"
+description = "Delivery Fee Calculator"
+authors = ["goldenglorys <olusolagloryolamide@gmail.com>"]
+readme = "README.md"
+packages = [{include = "delivery_fee_calculator_api"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pydantic = "^2.5.3"
+psutil = "^5.9.8"
+fastapi = "^0.109.0"
+uvicorn = "^0.26.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
