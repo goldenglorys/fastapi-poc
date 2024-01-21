@@ -3,6 +3,7 @@ FROM python:3.10-buster
 
 ENV \
     # python:
+    PYTHONPATH=/app \
     PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
     VIRTUAL_ENV=/pybay-venv \

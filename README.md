@@ -3,7 +3,7 @@
 ## Description
 
 A single endpoint API that calculates the delivery fee based on the information in the request payload (JSON) 
-and includes the calculated delivery fee in the response payload (JSON). It is built using Python, FastAPI, and Pydantic as the data validation tool.
+and includes the calculated delivery fee in the response payload (JSON). It is built using Python, FastAPI, Poetry as the package manager, and Pydantic as the data validation tool.
 
 ### Tech Stack Used
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
@@ -48,9 +48,11 @@ Output:
 
 ## **Pytest**
 
-Alternatively you can use the tests in test_fees.py by running "pytest" command in the project folder.
+* Test have been defined for the API using Pytest.
+* Make sure the previously created container is running, and you are in the root directory. 
+* Run the command below to run test.
 
 ```
-pytest
+docker compose exec web pytest --cov -s --cov-report term-missing 
 ```
 ---
