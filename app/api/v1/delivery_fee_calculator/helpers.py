@@ -52,6 +52,15 @@ class DeliveryFeeCalculator:
         :param delivery_distance: The delivery distance in meters.
         :return: The calculated distance fee in cents.
         """
+        if delivery_distance % 500 == 0:
+            distance_fee_mod_500 = (delivery_distance // 500) * self.settings.DISTANCE_SURCHARGE
+            return distance_fee_mod_500
+        else:
+            quotient, remainder = divmod(delivery_distance, 500)
+            rounded_distance = (delivery_distance + 500) - remainder
+            distance_fee_rounded = (rounded_distance // 500) * self.settings.DISTANCE_SURCHARGE
+            return distance_fee_rounded
+
         rounded_distance = (
             delivery_distance + self.settings.DISTANCE_INTERVAL
         ) - divmod(delivery_distance, self.settings.DISTANCE_INTERVAL)[1]

@@ -21,7 +21,7 @@ def test_calculate_cart_fee(calculator, cart_value, expected_cart_fee):
 
 @pytest.mark.parametrize(
     "delivery_distance, expected_distance_fee",
-    [(999, 200), (1499, 300), (1500, 400), (1501, 400)],
+    [(999, 200), (1499, 300), (1500, 300), (1501, 400)],
 )
 def test_calculate_distance_fee(calculator, delivery_distance, expected_distance_fee):
     assert calculator.calculate_distance_fee(delivery_distance) == expected_distance_fee
@@ -50,10 +50,10 @@ def test_apply_friday_rush_multiplier(
 @pytest.mark.parametrize(
     "cart_value, delivery_distance, number_of_items, expected_fee",
     [
-        (800, 1500, 5, 650),
-        (1000, 1500, 5, 450),
-        (1000, 1500, 5, 450),
-        (800, 2000, 10, 1000),
+        (800, 1500, 5, 550),
+        (1000, 1500, 5, 350),
+        (790, 2235, 4, 710),
+        (800, 2000, 10, 900),
     ],
 )
 def test_calculate_delivery_fee(
