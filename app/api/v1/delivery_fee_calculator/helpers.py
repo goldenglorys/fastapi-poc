@@ -53,22 +53,17 @@ class DeliveryFeeCalculator:
         :return: The calculated distance fee in cents.
         """
         if delivery_distance % 500 == 0:
-            distance_fee_mod_500 = (delivery_distance // 500) * self.settings.DISTANCE_SURCHARGE
+            distance_fee_mod_500 = (
+                delivery_distance // 500
+            ) * self.settings.DISTANCE_SURCHARGE
             return distance_fee_mod_500
         else:
             quotient, remainder = divmod(delivery_distance, 500)
             rounded_distance = (delivery_distance + 500) - remainder
-            distance_fee_rounded = (rounded_distance // 500) * self.settings.DISTANCE_SURCHARGE
+            distance_fee_rounded = (
+                rounded_distance // 500
+            ) * self.settings.DISTANCE_SURCHARGE
             return distance_fee_rounded
-
-        rounded_distance = (
-            delivery_distance + self.settings.DISTANCE_INTERVAL
-        ) - divmod(delivery_distance, self.settings.DISTANCE_INTERVAL)[1]
-        return max(
-            self.settings.BASE_DISTANCE_FEE,
-            (rounded_distance // self.settings.DISTANCE_INTERVAL)
-            * self.settings.DISTANCE_SURCHARGE,
-        )
 
     def calculate_item_fee(self, number_of_items: int) -> int:
         """
