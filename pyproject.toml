@@ -18,6 +18,12 @@ pytest-cov = "^4.1.0"
 pytest = "^7.4.4"
 httpx = "^0.26.0"
 
+[tool.pytest.ini_options]
+addopts = ["--cov", "--cov-report=xml", "-p no:warnings"]
+norecursedirs = [".git", "venv", "env", "dist", "build", ".venv"]
+python_files = ["test_*.py", "*_test.py", "tests.py"]
+pythonpath = ["delivery-fee-calculator-api/app"]
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
