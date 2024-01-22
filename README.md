@@ -56,3 +56,40 @@ Output:
 docker compose exec web pytest --cov -s --cov-report term-missing 
 ```
 ---
+
+Test coverage report :
+```log
+app/api/health/test_health_endpoint.py .
+app/tests/test_endpoint.py .............
+app/tests/test_helpers.py ...................
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Name                                            Stmts   Miss  Cover   Missing
+-----------------------------------------------------------------------------
+app/__init__.py                                     0      0   100%
+app/api/__init__.py                                 0      0   100%
+app/api/health/__init__.py                          0      0   100%
+app/api/health/routes.py                           16      0   100%
+app/api/health/schemas.py                          15      0   100%
+app/api/health/test_health_endpoint.py             28      0   100%
+app/api/schemas.py                                  4      0   100%
+app/api/v1/__init__.py                              0      0   100%
+app/api/v1/delivery_fee_calculator/helpers.py      36      0   100%
+app/api/v1/delivery_fee_calculator/routes.py       12      0   100%
+app/api/v1/delivery_fee_calculator/schemas.py      10      0   100%
+app/api/v1/routes.py                                4      0   100%
+app/config/__init__.py                              0      0   100%
+app/config/settings.py                             21      0   100%
+app/main.py                                         2      0   100%
+app/server/__init__.py                              0      0   100%
+app/server/setup.py                                10      0   100%
+app/tests/__init__.py                               0      0   100%
+app/tests/test_endpoint.py                         36      0   100%
+app/tests/test_helpers.py                          25      0   100%
+-----------------------------------------------------------------------------
+TOTAL                                             219      0   100%
+Coverage XML written to file coverage.xml
+
+
+================================ 33 passed in 1.19s ================================
+```
